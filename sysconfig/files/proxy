@@ -1,0 +1,70 @@
+{%- macro yesno_val(val) -%}
+{{ 'yes' if val|to_bool else 'no' }}
+{%- endmacro -%}
+
+{%- macro string_val(val) -%}
+{{ val|sequence|join(', ') if val is not none else '' }}
+{%- endmacro -%}
+
+## Path:	Network/Proxy
+## Description:
+## Type:	yesno
+## Default:	no
+## Config:      kde,profiles
+#
+# Enable a generation of the proxy settings to the profile.
+# This setting allows to turn the proxy on and off while
+# preserving the particular proxy setup.
+#
+PROXY_ENABLED="{{ yesno_val(proxy.enabled) }}"
+
+## Type:	string
+## Default:	""
+#
+# Some programs (e.g. lynx, arena and wget) support proxies, if set in
+# the environment.
+# Example: HTTP_PROXY="http://proxy.provider.de:3128/"
+HTTP_PROXY="{{ string_val(proxy.http_proxy) }}"
+
+## Type:	string
+## Default:	""
+#
+# Some programs (e.g. lynx, arena and wget) support proxies, if set in
+# the environment.
+# This setting is for https connections
+HTTPS_PROXY="{{ string_val(proxy.https_proxy) }}"
+
+## Type:	string
+## Default:	""
+#
+# Example: FTP_PROXY="http://proxy.provider.de:3128/"
+#
+FTP_PROXY="{{ string_val(proxy.ftp_proxy) }}"
+
+## Type:	string
+## Default:	""
+#
+# Example: GOPHER_PROXY="http://proxy.provider.de:3128/"
+#
+GOPHER_PROXY="{{ string_val(proxy.gopher_proxy) }}"
+
+## Type:	string
+## Default:	""
+#
+# Example: SOCKS_PROXY="socks://proxy.example.com:8080"
+#
+SOCKS_PROXY="{{ string_val(proxy.socks_proxy) }}"
+
+## Type:	string
+## Default:	""
+#
+# Example: SOCKS5_SERVER="office-proxy.example.com:8881"
+#
+SOCKS5_SERVER="{{ string_val(proxy.socks5_server) }}"
+
+## Type:	string(localhost)
+## Default:	localhost
+#
+# Example: NO_PROXY="www.me.de, .do.main, localhost"
+#
+NO_PROXY="{{ string_val(proxy.no_proxy) }}"

@@ -1,0 +1,22 @@
+# vim: ft=yaml
+
+sysconfig:
+
+  # Lookup static data
+  lookup:
+    proxy:
+      config: /etc/sysconfig/proxy
+
+  # Proxy configuration. Only relevant for SUSE.
+  proxy:
+    enabled: yes
+    http_proxy: http://proxy.example.net:3128
+    https_proxy: http://proxy.example.net:3128
+    ftp_proxy: http://proxy.example.net:3128
+    # can be empty, string or null
+    gopher_proxy: ~
+    socks_proxy: ~
+    socks5_server: ''
+    no_proxy:
+      - localhost
+      - 127.0.0.1

@@ -1,0 +1,13 @@
+sysconfig:
+  proxy:
+    config: /etc/sysconfig/proxy
+    enabled: no
+    http_proxy: ~
+    https_proxy: ~
+    ftp_proxy: ~
+    gopher_proxy: ~
+    socks_proxy: ~
+    socks5_server: ~
+    no_proxy:
+      - localhost
+      - 127.0.0.1
