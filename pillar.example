@@ -1,6 +1,34 @@
 # vim: ft=yaml
 
 sysconfig:
+  network_scripts:
+    ifcfg-eth0:
+      - DEVICE: eth0
+      - NAME: eth0
+      - HWADDR: 00:16:76:D6:C9:45
+      - TYPE: Ethernet
+      - BOOTPROTO: none
+      - ONBOOT: yes
+      - PROXY_METHOD: none
+      - BROWSER_ONLY: no
+      - USERCTL: no
+      - DEFROUTE: yes
+      - IPV4_FAILURE_FATAL: no
+      - IPADDR: 27.61.220.226
+      - NETMASK: 255.255.255.0
+      - PREFIX: 24
+      - GATEWAY: 67.54.214.21
+      - IPV6INIT: yes
+      - IPV6_AUTOCONF: no
+      - IPV6_DEFROUTE: yes
+      - IPV6_FAILURE_FATAL: no
+      - IPV6ADDR: 56d7:c9b4:2a0f:8841:ebe4:f57a:6a49:0e72
+      - IPV6_DEFAULTGW: 5c68:da46:2ccb:9b40:65e6:d236:9adc:e40b
+      - PEERDNS: no
+      - DNS1: 36a0:48d2:f7ba:9c2d:7594:5076:994f:b9ab
+      - DNS2: 56d7:c9b4:2a0f:8841:ebe4:f57a:6a49:0e72
+      - DNS3: 1.1.1.1
+      - DNS4: 8.8.8.8
 
   # Lookup static data
   lookup:
