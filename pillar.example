@@ -2,6 +2,64 @@
 
 sysconfig:
 
+  # Network configuration files on RHEL/CentOS derivatives
+  network_scripts:
+    # Values provided here update those already present in config file.
+    # Boolean values is translated to 'yes' or 'no'.
+    # If you want to remove a value from a config file, set its value to null.
+    ifcfg-eth1:
+      DEVICE: eth1
+      ONBOOT: yes
+      IPADDR: 192.0.2.2
+      NETMASK: 255.255.255.0
+      GATEWAY: 192.0.2.1
+      IPV6_AUTOCONF: true
+      # Set to null to remove values from config
+      IPV6ADDR: null
+      IPV6ADDR_SECONDARIES:
+      IPV6_DEFAULTGW: ~
+    # You can use a list of key-value pairs
+    ifcfg-eth0:
+      - DEVICE: eth0
+      - NAME: eth0
+      - HWADDR: 00:16:76:D6:C9:45
+      - TYPE: Ethernet
+      - BOOTPROTO: none
+      - ONBOOT: yes
+      - PROXY_METHOD: none
+      - BROWSER_ONLY: no
+      - USERCTL: no
+      - DEFROUTE: yes
+      - IPV4_FAILURE_FATAL: no
+      - IPADDR: 27.61.220.226
+      - NETMASK: 255.255.255.0
+      - PREFIX: 24
+      - GATEWAY: 67.54.214.21
+      - IPV6INIT: yes
+      - IPV6_AUTOCONF: no
+      - IPV6_DEFROUTE: yes
+      - IPV6_FAILURE_FATAL: no
+      - IPV6ADDR: 56d7:c9b4:2a0f:8841:ebe4:f57a:6a49:0e72
+      - IPV6_DEFAULTGW: 5c68:da46:2ccb:9b40:65e6:d236:9adc:e40b
+      - PEERDNS: no
+      - DNS1: 36a0:48d2:f7ba:9c2d:7594:5076:994f:b9ab
+      - DNS2: 56d7:c9b4:2a0f:8841:ebe4:f57a:6a49:0e72
+      - DNS3: 1.1.1.1
+      - DNS4: 8.8.8.8
+    # You can specify a full content of the config file as a string
+    ifcfg-eth2: |
+      NAME=ethernet
+      UUID=1c4ddf70-01bf-46d6-b04f-47e842bd98da
+      TYPE=Ethernet
+      BOOTPROTO=dhcp
+      DEFROUTE=yes
+      PEERDNS=yes
+      PEERROUTES=yes
+      IPV4_FAILURE_FATAL=no
+      ONBOOT=yes
+    # You can completely remove config file by using keyword 'absent'
+    ifcfg-eth3: absent
+
   # Lookup static data
   lookup:
     proxy:
