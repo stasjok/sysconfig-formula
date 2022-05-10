@@ -1,7 +1,24 @@
 # vim: ft=yaml
 
 sysconfig:
+
+  # Network configuration files on RHEL/CentOS derivatives
   network_scripts:
+    # Values provided here update those already present in config file.
+    # Boolean values is translated to 'yes' or 'no'.
+    # If you want to remove a value from a config file, set its value to null.
+    ifcfg-eth1:
+      DEVICE: eth1
+      ONBOOT: yes
+      IPADDR: 192.0.2.2
+      NETMASK: 255.255.255.0
+      GATEWAY: 192.0.2.1
+      IPV6_AUTOCONF: true
+      # Set to null to remove values from config
+      IPV6ADDR: null
+      IPV6ADDR_SECONDARIES:
+      IPV6_DEFAULTGW: ~
+    # You can use a list of key-value pairs
     ifcfg-eth0:
       - DEVICE: eth0
       - NAME: eth0
@@ -29,6 +46,19 @@ sysconfig:
       - DNS2: 56d7:c9b4:2a0f:8841:ebe4:f57a:6a49:0e72
       - DNS3: 1.1.1.1
       - DNS4: 8.8.8.8
+    # You can specify a full content of the config file as a string
+    ifcfg-eth2: |
+      NAME=ethernet
+      UUID=1c4ddf70-01bf-46d6-b04f-47e842bd98da
+      TYPE=Ethernet
+      BOOTPROTO=dhcp
+      DEFROUTE=yes
+      PEERDNS=yes
+      PEERROUTES=yes
+      IPV4_FAILURE_FATAL=no
+      ONBOOT=yes
+    # You can completely remove config file by using keyword 'absent'
+    ifcfg-eth3: absent
 
   # Lookup static data
   lookup:
